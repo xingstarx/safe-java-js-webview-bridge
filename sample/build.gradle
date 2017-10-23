@@ -10,8 +10,8 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 17
+        minSdkVersion 14
+        targetSdkVersion 25
     }
 
     lintOptions {
@@ -28,6 +28,6 @@ android {
 }
 
 dependencies {
-    //compile 'cn.pedant.safewebviewbridge:library:1.4'
+//    compile 'cn.pedant.safewebviewbridge:library:1.4'
     compile project(':library')
 }
