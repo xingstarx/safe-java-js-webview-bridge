@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
+import java.util.Map;
 
 public class JsCallJava {
     private final static String TAG = "JsCallJava";
@@ -76,7 +77,7 @@ public class JsCallJava {
                 sign += "_N";
             } else if (cls == boolean.class) {
                 sign += "_B";
-            } else if (cls == JSONObject.class) {
+            } else if (cls == Map.class) {
                 sign += "_O";
             } else if (cls == JsCallback.class) {
                 sign += "_F";
@@ -118,8 +119,14 @@ public class JsCallJava {
                         sign += "_B";
                         values[k + 1] = argsVals.getBoolean(k);
                     } else if ("object".equals(currType)) {
-                        sign += "_O";
-                        values[k + 1] = argsVals.isNull(k) ? null : argsVals.getJSONObject(k);
+                        Object object = argsVals.isNull(k) ? null : argsVals.getJSONObject(k);
+                        if (object == null) {
+                            sign += "_O";
+                            values[k + 1] = null;
+                        } else {
+                            sign += "_O";
+                            values[k + 1] = JsonMapConverter.jsonToMap((JSONObject) object);
+                        }
                     } else if ("function".equals(currType)) {
                         sign += "_F";
                         values[k + 1] = new JsCallback(webView, mInjectedName, argsVals.getInt(k));
@@ -179,7 +186,7 @@ public class JsCallJava {
                 && !(result instanceof Boolean)
                 && !(result instanceof Float)
                 && !(result instanceof Double)
-                && !(result instanceof JSONObject)) {    // 非数字或者非字符串的构造对象类型都要序列化后再拼接
+                && !(result instanceof Map)) {    // 非数字或者非字符串的构造对象类型都要序列化后再拼接
             if (mGson == null) {
                 mGson = new Gson();
             }
