@@ -1,8 +1,5 @@
 apply plugin: 'com.android.application'
 
-version = VERSION_NAME
-group = GROUP
-
 android {
     compileOptions.encoding = "UTF-8"
 
@@ -28,6 +25,5 @@ android {
 }
 
 dependencies {
-//    compile 'cn.pedant.safewebviewbridge:library:1.4'
     compile project(':library')
 }
