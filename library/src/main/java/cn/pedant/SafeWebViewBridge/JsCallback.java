@@ -11,7 +11,6 @@ package cn.pedant.SafeWebViewBridge;
 import android.util.Log;
 import android.webkit.WebView;
 
-import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
 
 public class JsCallback {
@@ -24,7 +23,7 @@ public class JsCallback {
 
     public JsCallback (WebView view, String injectedName, int index) {
         mCouldGoOn = true;
-        mWebViewRef = new WeakReference<WebView>(view);
+        mWebViewRef = new WeakReference<>(view);
         mInjectedName = injectedName;
         mIndex = index;
     }
