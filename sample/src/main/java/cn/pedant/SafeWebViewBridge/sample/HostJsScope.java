@@ -14,6 +14,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.webkit.WebView;
 import android.widget.Toast;
 
@@ -21,8 +22,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import cn.pedant.SafeWebViewBridge.JsCallback;
 import cn.pedant.SafeWebViewBridge.sample.util.TaskExecutor;
@@ -117,24 +120,52 @@ public class HostJsScope {
         }
     }
 
+    public static void goToSomewhereCallBack(WebView view, String name, String jo, boolean refresh, JsCallback jsCallback) {
+        Log.e("HostJsScope", "goToSomewhereCallBack invoked!");
+//        if(StringUtils.isEmpty(name)) return;
+//        Map<String,Object> params = (jo != null ? StringUtils.JsonObject2HashMap(jo) : new HashMap<String, Object>());
+//        activity.routeToName(name,params);
+//        isRefresh = refresh;
+//        if(jsCallback != null) {
+//            HostJsLoanApp.jsCallback = jsCallback;
+//        }
+    }
+
+    public static void changeVariables(WebView view, String name, Map<String,Object> params) {
+        Log.e("HostJsScope", "changeVariables invoked!");
+    }
+
+    public static void invokeMethod(WebView view, String name, Map<String,Object> params) {
+        Log.e("HostJsScope", "invokeMethod invoked!");
+    }
+
+    public static void selectImage(WebView view, String type, JsCallback jsCallback) {
+        Log.e("HostJsScope", "selectImage invoked!");
+    }
+
     /**
      * 传入Json对象
      * @param view 浏览器
      * @param jo 传入的JSON对象
      * @return 返回对象的第一个键值对
      * */
-    public static String passJson2Java (WebView view, JSONObject jo) {
-        Iterator iterator = jo.keys();
-        String res = null;
-        if(iterator.hasNext()) {
-            try {
-                String keyW = (String)iterator.next();
-                res = keyW + ": " + jo.getString(keyW);
-            } catch (JSONException je) {
+//    public static String passJson2Java (WebView view, JSONObject jo) {
+//        Iterator iterator = jo.keys();
+//        String res = null;
+//        if(iterator.hasNext()) {
+//            try {
+//                String keyW = (String)iterator.next();
+//                res = keyW + ": " + jo.getString(keyW);
+//            } catch (JSONException je) {
+//
+//            }
+//        }
+//        return res;
+//    }
 
-            }
-        }
-        return res;
+    public static String passJson2Java (WebView view, Map<String,Object> params) {
+        Log.e("HostJsScope", "passJson2Java invoked!");
+        return "passJson2Java";
     }
 
     /**

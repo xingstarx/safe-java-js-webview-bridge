@@ -1,6 +1,7 @@
 package cn.pedant.SafeWebViewBridge.sample;
 
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
@@ -16,6 +17,9 @@ public class WebActivity extends Activity {
         setContentView(wv);
         WebSettings ws = wv.getSettings();
         ws.setJavaScriptEnabled(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            WebView.setWebContentsDebuggingEnabled(true);
+        }
         wv.setWebChromeClient(
             new CustomChromeClient("HostApp", HostJsScope.class)
         );

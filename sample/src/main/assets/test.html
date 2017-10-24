@@ -166,6 +166,58 @@
         </div>
         <button onclick="HostApp.alert(HostApp.passLongType(14102300951321235) + '');">测试</button>
     </li>
+
+
+    <br/>
+    <li>
+        goToSomewhereCallBack测试<br/>
+        代码：<br/>
+        <div>
+            HostApp.goToSomewhereCallBack('name', 'jo', true, function() {});
+        </div>
+        <button onclick="HostApp.goToSomewhereCallBack('name', 'jo', true, function() {});">测试</button>
+    </li>
+
+    <br/>
+    <li>
+        goBack测试<br/>
+        代码：<br/>
+        <div>
+            HostApp.goBack();
+        </div>
+        <button onclick="HostApp.goBack();">测试</button>
+    </li>
+
+    <br/>
+    <li>
+        changeVariables测试<br/>
+        代码：<br/>
+        <div>
+            HostApp.changeVariables('name', {});
+        </div>
+        <button onclick="HostApp.changeVariables('name', {})">测试</button>
+    </li>
+
+    <br/>
+    <li>
+        invokeMethod测试<br/>
+        代码：<br/>
+        <div>
+            HostApp.invokeMethod('name', {'b1': 'back-value1', 'b2': 'back-value2'});
+        </div>
+        <button onclick="HostApp.invokeMethod('name', {'b1': 'back-value1', 'b2': 'back-value2'});">测试</button>
+    </li>
+
+    <br/>
+    <li>
+        selectImage测试<br/>
+        代码：<br/>
+        <div>
+            HostApp.selectImage('type', {'b1': 'back-value1', 'b2': 'back-value2'});
+        </div>
+        <button onclick="HostApp.selectImage('type', {'b1': 'back-value1', 'b2': 'back-value2'});">测试</button>
+    </li>
+
 </ul>
 
 </body>
