@@ -36,7 +36,8 @@ public class JsCallJava {
             sb.append(" initialization begin\");var a={queue:[],callback:function(){var d=Array.prototype.slice.call(arguments,0);var c=d.shift();var e=d.shift();this.queue[c].apply(this,d);if(!e){delete this.queue[c]}}};");
             for (Method method : methods) {
                 String sign;
-                if (method.getModifiers() != (Modifier.PUBLIC | Modifier.STATIC) || (sign = genJavaMethodSign(method)) == null) {
+                //针对kotlin语言做兼容处理，kotlin实现的HostApp，是pubic static final method()，而java语言实现的HostApp是public static method(),仔细理解下面的位运算
+                if ((method.getModifiers() | Modifier.FINAL) != (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL) || (sign = genJavaMethodSign(method)) == null) {
                     continue;
                 }
                 mMethodsMap.put(sign, method);
