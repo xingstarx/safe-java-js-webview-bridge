@@ -5,36 +5,21 @@ Safe Java-JS WebView Bridge
 ## 安装
 使用Safe Java-JS WebView Bridge最简单的办法就是像下面这样添加项目依赖。
 
-**Maven**
-
-    <dependency>
-      <groupId>com.google.code.gson</groupId>
-      <artifactId>gson</artifactId>
-      <version>2.3</version>
-    </dependency>
-    <dependency>
-      <groupId>cn.pedant.safewebviewbridge</groupId>
-      <artifactId>library</artifactId>
-      <version>1.4</version>
-      <type>aar</type>
-    </dependency>
-
 **Gradle**
 
-    repositories {
-        mavenCentral()
-    }
+使用JitPack发布项目
+```
+compile 'com.github.xingstarx:safe-java-js-webview-bridge:master-SNAPSHOT'
+```
+ ```
+ allprojects {
+ 		repositories {
+ 			...
+ 			maven { url 'https://jitpack.io' }
+ 		}
+ 	}
+ ```
 
-    dependencies {
-        compile 'cn.pedant.safewebviewbridge:library:1.4'
-    }
-
-## Sample
-[Sample 下载](https://github.com/pedant/safe-java-js-webview-bridge/releases/download/v1.1/safe-webview-bridge-sample-v1.1.apk)
-
-![image](https://github.com/pedant/safe-java-js-webview-bridge/raw/master/app-sample-screenshot.png)
-
-## 用法
 
 ### 如何开始
 初始化Webview WebSettings时允许js脚本执行，同时使用你的注入名和注入类来实例化一个**InjectedChromeClient**对象，然后关联到你的Webview实例。如demo中的例子（页面中引用的对象名为HostApp，指定的注入类为HostJsScope）：
